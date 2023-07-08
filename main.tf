@@ -15,7 +15,6 @@ resource "google_storage_bucket_object" "backup_object" {
   name       = "WideWorldImporters-Full.bak"
   bucket     = "sqlservermedia"
   source     = "https://storage.cloud.google.com/sqlservermedia/WideWorldImporters-Full.bak" 
-  project    = "groovy-karma-388506"
   
 }
 
@@ -26,7 +25,6 @@ resource "google_sql_database_instance_imports" "import" {
   type             = "IMPORT"
   file_type        = "BACKUP"
   uri              = google_storage_bucket_object.backup_object.self_link
-  project          = "groovy-karma-388506"
-  region           = "us-central1"
+   region           = "us-central1"
   database_version = "SQLSERVER_2019_EXPRESS"
 }
