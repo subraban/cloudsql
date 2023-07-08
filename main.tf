@@ -18,7 +18,7 @@ resource "google_storage_bucket_object" "backup_object" {
   
 }
 
-resource "google_sql_database_instance_imports" "import" {
+resource "google_sql_database_instance_import" "import" {
   name             = "import-operation"
   instance         = google_sql_database_instance.sql_instance.name
   database         = "db2"
