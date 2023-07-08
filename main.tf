@@ -19,12 +19,9 @@ resource "google_storage_bucket_object" "backup_object" {
 }
 
 resource "google_sql_database_instance_import" "import" {
-  name             = "import-operation"
-  instance         = google_sql_database_instance.sql_instance.name
-  database         = "db2"
-  type             = "IMPORT"
-  file_type        = "BACKUP"
-  uri              = google_storage_bucket_object.backup_object.self_link
-   region           = "us-central1"
-  database_version = "SQLSERVER_2019_EXPRESS"
+  name       = "import"
+ 
+  instance   = google_sql_database_instance.sql_instance.name
+  database   = "db3"
+  uri        = "gs://$sqlservermedia/WideWorldImporters-Full.bak"
 }
